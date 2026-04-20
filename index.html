@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ava Cortez Leido | One Tolentino East Residences</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pine: #1a2e22;
+      --sage: #4a7c5b;
+      --mist: #c8d9cc;
+      --cream: #f5f0e8;
+      --gold: #b8975a;
+      --gold-light: #d4b87a;
+      --white: #fdfcfa;
+      --charcoal: #2c2c2c;
+      --text: #3a3a3a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(26,46,34,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(184,151,90,0.2);
+    }
+    .nav-brand { display: flex; flex-direction: column; }
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 600;
+      color: var(--gold-light); letter-spacing: 0.04em;
+    }
+    .nav-title { font-size: 0.68rem; color: var(--mist); letter-spacing: 0.18em; text-transform: uppercase; font-weight: 300; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--mist); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 400; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-cta {
+      background: var(--gold); color: var(--pine); border: none;
+      padding: 10px 24px; font-family: 'Jost', sans-serif;
+      font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+      font-weight: 500; cursor: pointer; transition: background 0.3s;
+      text-decoration: none; display: inline-block;
+    }
+    .nav-cta:hover { background: var(--gold-light); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, var(--pine) 0%, #0f1e16 50%, #1c3425 100%);
+      position: relative; overflow: hidden;
+      display: flex; align-items: center;
+    }
+    .hero-bg-pattern {
+      position: absolute; inset: 0; opacity: 0.04;
+      background-image: repeating-linear-gradient(45deg, var(--gold) 0px, var(--gold) 1px, transparent 1px, transparent 60px),
+                        repeating-linear-gradient(-45deg, var(--gold) 0px, var(--gold) 1px, transparent 1px, transparent 60px);
+    }
+    .hero-glow {
+      position: absolute; width: 600px; height: 600px;
+      border-radius: 50%; background: radial-gradient(circle, rgba(74,124,91,0.25) 0%, transparent 70%);
+      top: -100px; right: -100px; pointer-events: none;
+    }
+    .hero-glow2 {
+      position: absolute; width: 400px; height: 400px;
+      border-radius: 50%; background: radial-gradient(circle, rgba(184,151,90,0.12) 0%, transparent 70%);
+      bottom: 0; left: 200px; pointer-events: none;
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto; padding: 120px 48px 80px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-bottom: 24px;
+    }
+    .hero-tag span {
+      font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500;
+    }
+    .hero-tag::before, .hero-tag::after {
+      content: ''; display: block; height: 1px; width: 30px; background: var(--gold); opacity: 0.6;
+    }
+    .hero-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 300; line-height: 1.1;
+      color: var(--white);
+    }
+    .hero-headline em { font-style: italic; color: var(--gold-light); }
+    .hero-sub {
+      margin-top: 20px; font-size: 1rem; color: var(--mist);
+      font-weight: 300; line-height: 1.7; max-width: 440px;
+    }
+    .hero-actions { margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: var(--pine);
+      padding: 14px 36px; font-family: 'Jost', sans-serif;
+      font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase;
+      font-weight: 500; cursor: pointer; border: none; text-decoration: none;
+      display: inline-block; transition: all 0.3s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent; color: var(--mist);
+      padding: 14px 36px; border: 1px solid rgba(200,217,204,0.3);
+      font-family: 'Jost', sans-serif; font-size: 0.8rem; letter-spacing: 0.14em;
+      text-transform: uppercase; font-weight: 400; cursor: pointer; text-decoration: none;
+      display: inline-block; transition: all 0.3s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(184,151,90,0.2);
+      backdrop-filter: blur(8px);
+      padding: 40px; position: relative;
+    }
+    .hero-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 60px; height: 3px; background: var(--gold);
+    }
+    .hero-card-img {
+      width: 100%; aspect-ratio: 4/3; object-fit: cover;
+      display: block; margin-bottom: 24px;
+      background: linear-gradient(135deg, #1c3d2a 0%, #0d2417 100%);
+    }
+    .hero-card-img-placeholder {
+      width: 100%; aspect-ratio: 4/3;
+      background: linear-gradient(135deg, rgba(74,124,91,0.3) 0%, rgba(26,46,34,0.8) 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      margin-bottom: 24px; border: 1px dashed rgba(184,151,90,0.3);
+    }
+    .hero-card-img-placeholder .skyline { font-size: 3rem; margin-bottom: 8px; opacity: 0.6; }
+    .hero-card-img-placeholder p { color: var(--mist); font-size: 0.75rem; letter-spacing: 0.1em; }
+    .property-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 600; color: var(--white); margin-bottom: 6px;
+    }
+    .property-location { font-size: 0.78rem; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 20px; }
+    .property-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+    .badge {
+      padding: 5px 14px; border: 1px solid rgba(184,151,90,0.4);
+      font-size: 0.7rem; color: var(--mist); letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      background: var(--gold);
+      padding: 28px 48px;
+      display: flex; justify-content: center; gap: 80px; flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; }
+    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--pine); }
+    .stat-label { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(26,46,34,0.7); margin-top: 2px; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 100px 48px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-eyebrow {
+      font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--sage); font-weight: 500; margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300;
+      color: var(--pine); line-height: 1.2;
+    }
+    .section-title em { font-style: italic; color: var(--sage); }
+    .divider { width: 60px; height: 2px; background: var(--gold); margin: 24px 0; }
+
+    /* ── ABOUT PROPERTY ── */
+    #property { background: var(--cream); }
+    .property-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 60px; }
+    .property-desc { font-size: 1rem; line-height: 1.85; color: var(--text); font-weight: 300; }
+    .property-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .spec-item {
+      background: var(--white); padding: 24px 20px;
+      border-left: 3px solid transparent; transition: border-color 0.3s;
+    }
+    .spec-item:hover { border-left-color: var(--gold); }
+    .spec-label { font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sage); margin-bottom: 6px; }
+    .spec-value { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--pine); font-weight: 600; }
+
+    /* ── UNIT TYPES ── */
+    #units { background: var(--pine); }
+    #units .section-title { color: var(--white); }
+    #units .section-eyebrow { color: var(--gold); }
+    .units-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 60px; }
+    .unit-card {
+      background: rgba(255,255,255,0.04); padding: 36px 28px;
+      border-top: 3px solid rgba(184,151,90,0.3);
+      transition: all 0.4s; cursor: default;
+      position: relative; overflow: hidden;
+    }
+    .unit-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 0; background: rgba(184,151,90,0.08); transition: height 0.4s;
+    }
+    .unit-card:hover { border-top-color: var(--gold); }
+    .unit-card:hover::after { height: 100%; }
+    .unit-type {
+      font-family: 'Cormorant Garamond', serif; font-size: 2.2rem;
+      font-weight: 600; color: var(--gold-light); margin-bottom: 8px;
+    }
+    .unit-name { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mist); margin-bottom: 20px; }
+    .unit-features { list-style: none; }
+    .unit-features li {
+      font-size: 0.82rem; color: rgba(200,217,204,0.8); padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 8px;
+    }
+    .unit-features li::before { content: '—'; color: var(--gold); font-size: 0.7rem; }
+
+    /* ── AMENITIES ── */
+    #amenities { background: var(--white); }
+    .amenities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+    .amenity-card {
+      padding: 32px; border: 1px solid rgba(74,124,91,0.15);
+      transition: all 0.3s; position: relative;
+    }
+    .amenity-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 0; height: 2px; background: var(--gold); transition: width 0.4s;
+    }
+    .amenity-card:hover::before { width: 100%; }
+    .amenity-card:hover { background: var(--cream); }
+    .amenity-icon { font-size: 1.8rem; margin-bottom: 14px; }
+    .amenity-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--pine); margin-bottom: 6px; }
+    .amenity-desc { font-size: 0.8rem; color: #666; line-height: 1.6; font-weight: 300; }
+
+    /* ── LOCATION ── */
+    #location { background: var(--cream); }
+    .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 60px; }
+    .location-address {
+      background: var(--pine); padding: 40px; color: var(--white); margin-bottom: 24px;
+    }
+    .location-address h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--gold-light); margin-bottom: 12px; }
+    .location-address p { font-size: 0.88rem; line-height: 1.7; color: var(--mist); font-weight: 300; }
+    .location-highlights { display: flex; flex-direction: column; gap: 16px; }
+    .location-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 16px 0; border-bottom: 1px solid rgba(74,124,91,0.15);
+    }
+    .location-item:last-child { border-bottom: none; }
+    .loc-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+    .loc-text strong { display: block; font-size: 0.85rem; color: var(--pine); margin-bottom: 2px; }
+    .loc-text span { font-size: 0.78rem; color: #666; font-weight: 300; }
+    .map-placeholder {
+      width: 100%; aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #d4e8da 0%, #b8d4c0 50%, #9cbfaa 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      border: 1px solid rgba(74,124,91,0.2); position: relative; overflow: hidden;
+    }
+    .map-placeholder::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(0deg, rgba(74,124,91,0.1) 0px, transparent 1px, transparent 30px),
+                        repeating-linear-gradient(90deg, rgba(74,124,91,0.1) 0px, transparent 1px, transparent 30px);
+    }
+    .map-pin { font-size: 3rem; z-index: 1; }
+    .map-label { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--pine); z-index: 1; margin-top: 8px; }
+
+    /* ── AGENT ── */
+    #agent { background: linear-gradient(135deg, var(--pine) 0%, #0f1e16 100%); }
+    .agent-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+    .agent-avatar {
+      width: 140px; height: 140px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--sage) 0%, var(--pine) 100%);
+      margin: 0 auto 32px; display: flex; align-items: center; justify-content: center;
+      border: 3px solid var(--gold); font-size: 3rem; color: var(--white);
+      box-shadow: 0 0 0 8px rgba(184,151,90,0.1);
+    }
+    .agent-label { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .agent-name {
+      font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300;
+      color: var(--white); margin-bottom: 8px;
+    }
+    .agent-cred { font-size: 0.8rem; color: var(--mist); letter-spacing: 0.1em; margin-bottom: 40px; }
+    .agent-quote {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic;
+      color: var(--mist); line-height: 1.6; max-width: 640px; margin: 0 auto 48px;
+      padding: 32px; border: 1px solid rgba(184,151,90,0.2);
+      position: relative;
+    }
+    .agent-quote::before { content: '\201C'; font-size: 4rem; color: var(--gold); position: absolute; top: -10px; left: 20px; line-height: 1; }
+    .contact-cards { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 40px; }
+    .contact-card {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(184,151,90,0.25);
+      padding: 24px 32px; text-align: center; min-width: 200px;
+      transition: all 0.3s;
+    }
+    .contact-card:hover { background: rgba(184,151,90,0.1); border-color: var(--gold); }
+    .contact-card-icon { font-size: 1.5rem; margin-bottom: 10px; }
+    .contact-card-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .contact-card-value { font-size: 0.95rem; color: var(--white); font-weight: 400; }
+    .contact-card a { color: var(--white); text-decoration: none; }
+
+    /* ── CTA BANNER ── */
+    #cta { background: var(--gold); padding: 80px 48px; text-align: center; }
+    #cta h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: var(--pine); margin-bottom: 12px; }
+    #cta p { font-size: 1rem; color: rgba(26,46,34,0.75); margin-bottom: 36px; font-weight: 300; }
+    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-dark { background: var(--pine); color: var(--gold-light); padding: 16px 40px; border: none; font-family: 'Jost', sans-serif; font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.3s; }
+    .btn-dark:hover { background: #0f1e16; transform: translateY(-2px); }
+    .btn-outline-dark { background: transparent; color: var(--pine); padding: 16px 40px; border: 2px solid var(--pine); font-family: 'Jost', sans-serif; font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.3s; }
+    .btn-outline-dark:hover { background: rgba(26,46,34,0.08); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0a140d; padding: 40px 48px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: gap;
+    }
+    .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gold); }
+    .footer-copy { font-size: 0.72rem; color: rgba(200,217,204,0.4); letter-spacing: 0.08em; }
+    .footer-dev { font-size: 0.72rem; color: rgba(200,217,204,0.4); }
+    .footer-dev a { color: var(--gold); text-decoration: none; }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      section { padding: 70px 24px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; padding: 100px 24px 60px; }
+      .property-grid, .location-grid { grid-template-columns: 1fr; gap: 40px; }
+      .units-grid { grid-template-columns: 1fr 1fr; }
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+      .stats-strip { gap: 40px; padding: 24px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+    @media (max-width: 600px) {
+      .units-grid, .amenities-grid { grid-template-columns: 1fr; }
+      .property-specs { grid-template-columns: 1fr; }
+      .contact-cards { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <span class="nav-name">Ava Cortez Leido</span>
+    <span class="nav-title">Property Specialist · Philippines</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#property">Property</a></li>
+    <li><a href="#units">Units</a></li>
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="#agent">Contact</a></li>
+  </ul>
+  <a href="tel:+639190014369" class="nav-cta">Call Now</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag"><span>Exclusively Presented By Ava Cortez Leido</span></div>
+      <h1 class="hero-headline">
+        One With Your<br><em>Breath.</em><br>One With Tagaytay.
+      </h1>
+      <p class="hero-sub">
+        Discover the most promising pre-selling condominium in Tagaytay City — where cool mountain air, scenic vistas, and refined living converge into one extraordinary address.
+      </p>
+      <div class="hero-actions">
+        <a href="#agent" class="btn-primary">Inquire Now</a>
+        <a href="#property" class="btn-outline">Explore Property</a>
+      </div>
+    </div>
+    <div>
+      <div class="hero-card">
+        <div class="hero-card-img-placeholder">
+          <div class="skyline">🏙️</div>
+          <p>One Tolentino East Residences</p>
+        </div>
+        <div class="property-name">One Tolentino East Residences</div>
+        <div class="property-location">📍 Isaac O. Tolentino Ave, Brgy. Tolentino East, Tagaytay City</div>
+        <div class="property-badges">
+          <span class="badge">Pre-Selling</span>
+          <span class="badge">1BR – Penthouse</span>
+          <span class="badge">22 Levels</span>
+          <span class="badge">4 Parking Levels</span>
+          <span class="badge">OTE Dev Corp</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">9,221</div>
+    <div class="stat-label">sqm Land Area</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">22</div>
+    <div class="stat-label">Levels</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">4</div>
+    <div class="stat-label">Unit Types</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">4</div>
+    <div class="stat-label">Parking Levels</div>
+  </div>
+</div>
+
+<!-- PROPERTY -->
+<section id="property">
+  <div class="section-inner">
+    <p class="section-eyebrow fade-up">The Property</p>
+    <h2 class="section-title fade-up">Tagaytay's Most <em>Promising</em> Address</h2>
+    <div class="divider fade-up"></div>
+    <div class="property-grid">
+      <div class="fade-up">
+        <p class="property-desc">
+          One Tolentino East Residences is a landmark condominium development rising in the heart of Tagaytay City — one of the Philippines' most beloved highland destinations. Developed by OTE Dev Corp, this pre-selling project is designed for those who seek the perfect balance of urban convenience and mountain serenity.
+        </p>
+        <br>
+        <p class="property-desc">
+          Whether you're looking for a personal sanctuary to escape the city, a vacation retreat, or a smart real estate investment with strong appreciation potential, One Tolentino East Residences delivers an unparalleled lifestyle in a location that simply cannot be replicated.
+        </p>
+        <br>
+        <p class="property-desc">
+          With sweeping views, cool breezes year-round, and a meticulously designed residential tower, this is your invitation to live differently — elevated.
+        </p>
+      </div>
+      <div class="property-specs fade-up">
+        <div class="spec-item">
+          <div class="spec-label">Developer</div>
+          <div class="spec-value">OTE Dev Corp</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">Type</div>
+          <div class="spec-value">Condominium</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">Land Area</div>
+          <div class="spec-value">9,221 sqm</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">Status</div>
+          <div class="spec-value">Pre-Selling</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">Tower</div>
+          <div class="spec-value">22 Levels</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">Parking</div>
+          <div class="spec-value">2 Podium + 2 Basement</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UNITS -->
+<section id="units">
+  <div class="section-inner">
+    <p class="section-eyebrow fade-up">Unit Types</p>
+    <h2 class="section-title fade-up">Find Your <em>Perfect</em> Home</h2>
+    <div class="divider fade-up"></div>
+    <div class="units-grid">
+      <div class="unit-card fade-up">
+        <div class="unit-type">1BR</div>
+        <div class="unit-name">One Bedroom</div>
+        <ul class="unit-features">
+          <li>Intimate & efficient layout</li>
+          <li>Ideal for singles & couples</li>
+          <li>Excellent rental potential</li>
+          <li>Smart vacation unit</li>
+        </ul>
+      </div>
+      <div class="unit-card fade-up" style="transition-delay:0.1s">
+        <div class="unit-type">2BR</div>
+        <div class="unit-name">Two Bedroom</div>
+        <ul class="unit-features">
+          <li>Spacious family living</li>
+          <li>Ideal for small families</li>
+          <li>Flexible room use</li>
+          <li>Great investment value</li>
+        </ul>
+      </div>
+      <div class="unit-card fade-up" style="transition-delay:0.2s">
+        <div class="unit-type">3BR</div>
+        <div class="unit-name">Three Bedroom</div>
+        <ul class="unit-features">
+          <li>Premium family space</li>
+          <li>Multiple bedroom suites</li>
+          <li>Generous living area</li>
+          <li>High appreciation value</li>
+        </ul>
+      </div>
+      <div class="unit-card fade-up" style="transition-delay:0.3s">
+        <div class="unit-type">PH</div>
+        <div class="unit-name">Penthouse</div>
+        <ul class="unit-features">
+          <li>Top-floor prestige</li>
+          <li>Panoramic Tagaytay views</li>
+          <li>Exclusive luxury living</li>
+          <li>Finest unit in the tower</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section id="amenities">
+  <div class="section-inner">
+    <p class="section-eyebrow fade-up">Amenities</p>
+    <h2 class="section-title fade-up">Designed for <em>Elevated</em> Living</h2>
+    <div class="divider fade-up"></div>
+    <div class="amenities-grid">
+      <div class="amenity-card fade-up">
+        <div class="amenity-icon">🏊</div>
+        <div class="amenity-name">Swimming Pool</div>
+        <div class="amenity-desc">A refreshing pool experience set against the cool Tagaytay air — the perfect way to unwind.</div>
+      </div>
+      <div class="amenity-card fade-up" style="transition-delay:0.1s">
+        <div class="amenity-icon">🛋️</div>
+        <div class="amenity-name">Lobby Lounge</div>
+        <div class="amenity-desc">Elegant multi-level lobby lounges that welcome you home in style and comfort every single day.</div>
+      </div>
+      <div class="amenity-card fade-up" style="transition-delay:0.2s">
+        <div class="amenity-icon">🏋️</div>
+        <div class="amenity-name">Fitness Area</div>
+        <div class="amenity-desc">A well-equipped gym space so you can maintain your active lifestyle without leaving the building.</div>
+      </div>
+      <div class="amenity-card fade-up" style="transition-delay:0.05s">
+        <div class="amenity-icon">🎪</div>
+        <div class="amenity-name">Function Room</div>
+        <div class="amenity-desc">Versatile event and gathering spaces for celebrations, meetings, and community activities.</div>
+      </div>
+      <div class="amenity-card fade-up" style="transition-delay:0.15s">
+        <div class="amenity-icon">🌿</div>
+        <div class="amenity-name">Garden & Roof Lounge</div>
+        <div class="amenity-desc">Lush garden lounge areas and a rooftop garden that bring nature right to your doorstep.</div>
+      </div>
+      <div class="amenity-card fade-up" style="transition-delay:0.25s">
+        <div class="amenity-icon">🏪</div>
+        <div class="amenity-name">Commercial Spaces</div>
+        <div class="amenity-desc">Ground-floor commercial development for retail, dining, and lifestyle convenience within the building.</div>
+      </div>
+      <div class="amenity-card fade-up">
+        <div class="amenity-icon">📚</div>
+        <div class="amenity-name">Reading Lounge</div>
+        <div class="amenity-desc">A quiet, curated reading lounge for moments of peace and contemplation in refined surroundings.</div>
+      </div>
+      <div class="amenity-card fade-up" style="transition-delay:0.1s">
+        <div class="amenity-icon">🅿️</div>
+        <div class="amenity-name">Podium & Basement Parking</div>
+        <div class="amenity-desc">2 podium parking levels and 2 basement parking levels providing ample, secure parking for all residents and guests.</div>
+      </div>
+      <div class="amenity-card fade-up" style="transition-delay:0.2s">
+        <div class="amenity-icon">🚗</div>
+        <div class="amenity-name">Driver's Lounge</div>
+        <div class="amenity-desc">A dedicated driver's lounge — a thoughtful amenity that reflects the project's attention to detail.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="section-inner">
+    <p class="section-eyebrow fade-up">Location</p>
+    <h2 class="section-title fade-up">In the <em>Heart</em> of Tagaytay</h2>
+    <div class="divider fade-up"></div>
+    <div class="location-grid">
+      <div class="fade-up">
+        <div class="location-address">
+          <h4>📍 One Tolentino East Residences</h4>
+          <p>Isaac O. Tolentino Avenue<br>Barangay Tolentino East<br>Tagaytay City, Cavite, Philippines</p>
+        </div>
+        <div class="location-highlights">
+          <div class="location-item">
+            <div class="loc-icon">🌋</div>
+            <div class="loc-text">
+              <strong>Taal Volcano Views</strong>
+              <span>One of the most iconic natural vistas in the Philippines at your doorstep</span>
+            </div>
+          </div>
+          <div class="location-item">
+            <div class="loc-icon">🌡️</div>
+            <div class="loc-text">
+              <strong>Cool Mountain Climate</strong>
+              <span>Tagaytay's refreshing highland climate year-round, a natural escape from Metro Manila</span>
+            </div>
+          </div>
+          <div class="location-item">
+            <div class="loc-icon">🛣️</div>
+            <div class="loc-text">
+              <strong>Accessible from Manila</strong>
+              <span>Approximately 1–2 hours from Metro Manila via SLEX and Aguinaldo Highway</span>
+            </div>
+          </div>
+          <div class="location-item">
+            <div class="loc-icon">🍽️</div>
+            <div class="loc-text">
+              <strong>Dining & Lifestyle Hubs</strong>
+              <span>Close to Tagaytay's famous restaurants, cafes, malls, and leisure destinations</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fade-up">
+        <div class="map-placeholder">
+          <div class="map-pin">📍</div>
+          <div class="map-label">Tagaytay City, Cavite</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENT -->
+<section id="agent">
+  <div class="section-inner">
+    <div class="agent-inner">
+      <div class="agent-avatar">👩‍💼</div>
+      <p class="agent-label">Your Trusted Real Estate Partner</p>
+      <h2 class="agent-name">Ava Cortez Leido</h2>
+      <p class="agent-cred">Property Specialist · OTE Dev Corp · Philippines</p>
+      <div class="agent-quote">
+        I'm here to guide you every step of the way — from your first inquiry to the moment you hold the keys to your dream home in Tagaytay. Your investment, your future, and your peace of mind are my priority.
+      </div>
+      <div class="contact-cards">
+        <div class="contact-card">
+          <div class="contact-card-icon">📞</div>
+          <div class="contact-card-label">Call or Viber</div>
+          <div class="contact-card-value"><a href="tel:+639190014369">+63 919-001-4369</a></div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">💬</div>
+          <div class="contact-card-label">WhatsApp / SMS</div>
+          <div class="contact-card-value"><a href="https://wa.me/639190014369">+63 919-001-4369</a></div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">🌐</div>
+          <div class="contact-card-label">Learn More</div>
+          <div class="contact-card-value"><a href="https://oteresidences.com" target="_blank">oteresidences.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <h2>Ready to Find Your Home in Tagaytay?</h2>
+  <p>Reserve your unit today. Limited slots available for this pre-selling development.</p>
+  <div class="cta-actions">
+    <a href="tel:+639190014369" class="btn-dark">📞 Call Ava Now</a>
+    <a href="https://oteresidences.com/properties/one-tolentino-east-residences/" target="_blank" class="btn-outline-dark">View Full Property Details</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Ava Cortez Leido · Property Specialist</div>
+  <div class="footer-copy">One Tolentino East Residences · Tagaytay City, Philippines</div>
+  <div class="footer-dev">Property by <a href="https://oteresidences.com" target="_blank">OTE Dev Corp</a></div>
+</footer>
+
+<script>
+  // Scroll-triggered fade-up
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
